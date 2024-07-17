@@ -16,7 +16,15 @@ None
 
 ## Release Notes
 
-None
+### 1.1.0
+
+Enhanced the error-handling, by ensuring
+that the provided folder name isn't empty,
+and the path is therefore correct.
+
+Fixed the incorrect message of a folder
+being created, which showed "C:/" instead
+of the actual root folder.
 
 ### 1.0.0
 
