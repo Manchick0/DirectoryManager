@@ -10,11 +10,15 @@ function activate(context) {
 
 	const disposable = vscode.commands.registerCommand('directorymanager.createFolder', async () => {
 		let path = getFolder(root)
+		if(await path === undefined || await path === ""){
+			vscode.window.showErrorMessage("The name of the folder can't be empty!")
+			return
+		}
 
 		fs.mkdir(await path, {recursive: true}, (err) => {
 			if(err){
-				vscode.window.showErrorMessage("Couldn't create a new folder within C:/!")
-			} else vscode.window.showInformationMessage('Successfully created a new folder within C:/!');
+				vscode.window.showErrorMessage(`Couldn't create a new folder within ${root}!`)
+			} else vscode.window.showInformationMessage(`Successfully created a new folder within ${root}!`);
 		})
 
 		let uri = vscode.Uri.file(await path)
@@ -29,6 +33,9 @@ function activate(context) {
  */
 async function getFolder(root) {
     const userResponse = await vscode.window.showInputBox({ placeHolder: 'Enter the name of your folder...' });
+	if(!userResponse){
+		return "";
+	}
 	if(root.endsWith("/")){
 		return root + userResponse;
 	}
