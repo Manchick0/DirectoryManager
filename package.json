@@ -1,0 +1,61 @@
+{
+  "name": "directorymanager",
+  "displayName": "DirectoryManager",
+  "description": "Allows you to create new folders within the VS code, and add them to your workspace.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "directorymanager.createFolder",
+        "title": "Create a new Folder"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "directorymanager.createFolder",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": [
+      {
+        "title": "DirectoryManager",
+        "properties": {
+          "directorymanager.rootFolder": {
+            "type": "string",
+            "default": "C:/",
+            "description": "The root path, where all the folders will be created."
+          }
+        }
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/vscode-wordcount.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.91.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0"
+  },
+  "icon": "./icon.png"
+}
