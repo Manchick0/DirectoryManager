@@ -1,6 +1,6 @@
 # README
 
-Welcome to the DirectoryManager, a simple plugin
+Welcome to the DirectoryManager, a simple VSC plugin
 that allows you to create (and add) new folders to 
 your workspace.
 ## Extension Settings
